@@ -18,6 +18,8 @@
     
     
     _localManager = [[BMKLocationManager alloc] init];
+    [_localManager setCoordinateType:BMKLocationCoordinateTypeGCJ02];
+    [_localManager setDesiredAccuracy:kCLLocationAccuracyBest];
     _localManager.delegate = self;
 }
 
@@ -73,10 +75,11 @@
                 [_data setValue:city forKey:@"city"];
                 [_data setValue:district forKey:@"district"];
                 [_data setValue:street forKey:@"street"];
-                [_data setValue:streetNumber forKey:@"street"];
+                [_data setValue:streetNumber forKey:@"streetNumber"];
                 [_data setValue:province forKey:@"province"];
                 [_data setValue:adCode forKey:@"adCode"];
                 [_data setValue:locationDescribe forKey:@"locationDescribe"];
+                [_data setValue:[NSString stringWithFormat:@"%@%@%@%@%@%@",province,city,district,street,streetNumber,locationDescribe] forKey:@"addr"];
             }
         }
         
